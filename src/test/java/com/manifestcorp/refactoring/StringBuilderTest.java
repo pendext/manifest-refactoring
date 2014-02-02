@@ -15,19 +15,27 @@ public class StringBuilderTest {
     }
 
     @Test
-    public void printOwingAndInvoiceClosingStatementCreatesCorrectInvoiceString() {
-        double amount = 3.00;
+    public void printInvoiceHeaderCreatedHeaderCorrectly() {
         String expectedResult = "";
         expectedResult += "************ ************ ************\n";
         expectedResult += "************ Your Invoice ************\n\n";
         expectedResult += "************ ************\n";
+
+        assertEquals("The header was not created correctly.", expectedResult,
+                stringBuilder.printInvoiceHeader());
+    }
+
+    @Test
+    public void printOwingAndInvoiceClosingStatementCreatesCorrectInvoiceString() {
+        double amount = 3.00;
+        String expectedResult = "";
         expectedResult += "***   Amount Owed     ***\n";
         expectedResult += "************ ************\n";
         expectedResult += "\n\n\n";
         expectedResult += "*** You owe $" + String.valueOf(amount) + " ***\n";
 
         assertEquals("The returned string are not equal.", expectedResult,
-                stringBuilder.printOwingAndInvoiceOpeningStatement(amount));
+                stringBuilder.printAmountOwed(amount));
     }
 
     @Test
