@@ -4,32 +4,32 @@ public class InvoiceStringBuilder {
 
     public String printInvoiceHeader() {
         String result = createHeaderOrFooterString(1);
-        result += "************ Your Invoice ************" + createNewLines(2);
+        result += String.format("************ Your Invoice ************%s", createNewLines(2));
         result += createInvoiceFillerLine(1);
         return result;
     }
 
     public String printAmountOwed(double amount) {
-        String result = "***   Amount Owed     ***" + createNewLines(1);
+        String result = String.format("***   Amount Owed     ***%s", createNewLines(1));
         result += createInvoiceFillerLine(1);
         result += createNewLines(3);
-        result += "*** You owe $" + String.valueOf(amount) + " ***" + createNewLines(1);
+        result += String.format("*** You owe $%s ***%s", String.valueOf(amount), createNewLines(1));
         return result;
     }
 
     public String printRefund(double refundAmount) {
         String result = createInvoiceFillerLine(1);
-        result += "***   Amount Refunded ***" + createNewLines(1);
+        result += String.format("***   Amount Refunded ***%s", createNewLines(1));
         result += createInvoiceFillerLine(1);
         result += createNewLines(3);
-        result += "*** Your refund is $" + String.valueOf(refundAmount) + " ***" + createNewLines(1);
+        result += String.format("*** Your refund is $%s ***%s", String.valueOf(refundAmount), createNewLines(1));
         return result;
     }
 
     public String printInvoiceClosingStatement(String customerName) {
         String result = "";
         result += createInvoiceFillerLine(2);
-        result += "*** Thank you, " + customerName + "   ***" + createNewLines(1);
+        result += String.format("*** Thank you, %s   ***%s", customerName, createNewLines(1));
         result += createHeaderOrFooterString(2);
         return result;
     }
@@ -45,7 +45,7 @@ public class InvoiceStringBuilder {
     private String createHeaderOrFooterString(int numberOfHeaderOrFooterStrings) {
         String headerOrFooterStrings = "";
         for (int i = 0; i < numberOfHeaderOrFooterStrings; i++) {
-            headerOrFooterStrings += "************ ************ ************" + createNewLines(1);
+            headerOrFooterStrings += String.format("************ ************ ************%s", createNewLines(1));
         }
         return headerOrFooterStrings;
     }
@@ -53,7 +53,7 @@ public class InvoiceStringBuilder {
     private String createInvoiceFillerLine(int numberOfInvoiceFillerLines) {
         String invoiceFillerLines = "";
         for (int i = 0; i < numberOfInvoiceFillerLines; i++) {
-            invoiceFillerLines += "************ ************" + createNewLines(1);
+            invoiceFillerLines += String.format("************ ************%s", createNewLines(1));
         }
         return invoiceFillerLines;
     }
