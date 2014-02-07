@@ -90,7 +90,7 @@ public class CustomerTest {
         Movie jaws = new Movie("Jaws", Movie.REGULAR);
         Movie starWars = new Movie("Star Wars", Movie.REGULAR);
         Movie inBruges = new Movie("In Bruges", Movie.REGULAR);
-        Movie thisIsTheEnd = new Movie("This Is The End", Movie.NEW_REALEASE);
+        Movie thisIsTheEnd = new Movie("This Is The End", Movie.NEW_RELEASE);
         Movie theLittleMermaid = new Movie("The Little Mermaid", Movie.CHILDRENS);
 
         Rental bladeRunnerRental = new Rental(bladeRunner, 4);

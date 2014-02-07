@@ -40,7 +40,7 @@ public class Customer {
                         thisAmount += (rental.getDaysRented() -2) * 1.5;
                     }
                     break;
-                case Movie.NEW_REALEASE:
+                case Movie.NEW_RELEASE:
                     thisAmount += rental.getDaysRented() * 3;
                     break;
                 case Movie.CHILDRENS:
@@ -54,7 +54,7 @@ public class Customer {
             // Add a frequent renter point for each rental
             frequentRenterPoints++;
 
-            if ((rental.getMovie().getPriceCode() == Movie.NEW_REALEASE) &&
+            if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
                 rental.getDaysRented() > 1) {
                 frequentRenterPoints++;
             }
