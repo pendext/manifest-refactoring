@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class DateProcessor {
 
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
+
     public void saveDueDate(Account account, String date) {
         Date parsedDate = parseDate(date);
         account.setDueDate(parsedDate);
@@ -19,7 +21,7 @@ public class DateProcessor {
     private Date parseDate(String date) {
         Date parsedDate = null;
         try {
-            parsedDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            parsedDate = new SimpleDateFormat(DATE_FORMAT).parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
