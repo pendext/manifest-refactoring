@@ -26,14 +26,44 @@ public class Customer {
     }
 
     public String statement() {
-        double totalAmount = 0;
+        double totalAmountForStatement = 0;
         int frequentRenterPoints = 0;
         String result = "Rental result for " + getName() + ".\n";
 
         for (Rental rental : getRentals()) {
             double thisAmount = 0;
 
-            switch(rental.getMovie().getPriceCode()) {
+            thisAmount += getPriceforRental(rental);
+
+            // Add a frequent renter point for each rental
+            frequentRenterPoints += calculateFrequentRenterPointsForRental(rental); 
+            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+            totalAmountForStatement += thisAmount;
+        }
+
+        result += "Amount owed is " + String.valueOf(totalAmountForStatement) + "\n";
+        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points.";
+        return result;
+    }
+
+    private int calculateFrequentRenterPointsForRental(Rental rental) {
+        int frequentRenterPoints = 0;
+        frequentRenterPoints++;
+
+        if (rentalShouldHaveFrequentRenterPointsIncremented(rental)) {
+            frequentRenterPoints++;
+        }
+        return frequentRenterPoints;
+    }
+
+    private boolean rentalShouldHaveFrequentRenterPointsIncremented(Rental rental) {
+        return (rental.getMovie().getPriceCode() == Movie.NEW_REALEASE &&
+                rental.getDaysRented() > 1);
+    }
+
+    private double getPriceforRental(Rental rental) {
+        double thisAmount = 0;
+        switch(rental.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
                     thisAmount += 2;
                     if (rental.getDaysRented() > 2) {
@@ -50,21 +80,7 @@ public class Customer {
                     }
                     break;
             }
-
-            // Add a frequent renter point for each rental
-            frequentRenterPoints++;
-
-            if ((rental.getMovie().getPriceCode() == Movie.NEW_REALEASE) &&
-                rental.getDaysRented() > 1) {
-                frequentRenterPoints++;
-            }
-            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
-        }
-
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points.";
-        return result;
+            return thisAmount;
     }
 
 
