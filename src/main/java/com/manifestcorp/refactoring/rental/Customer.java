@@ -7,6 +7,8 @@ public class Customer {
 
     private String name;
     private List<Rental> rentals;
+    private static final String TAB = "\t";
+    private static final String NEWLINE = "\n";
 
     public Customer(String customerName) {
         rentals = new ArrayList<Rental>();
@@ -37,11 +39,11 @@ public class Customer {
 
             // Add a frequent renter point for each rental
             frequentRenterPoints += calculateFrequentRenterPointsForRental(rental); 
-            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amountForIndividualRental) + "\n";
+            result += TAB + rental.getMovie().getTitle() + TAB + String.valueOf(amountForIndividualRental) + NEWLINE;
             totalAmountForStatement += amountForIndividualRental;
         }
 
-        result += "Amount owed is " + String.valueOf(totalAmountForStatement) + "\n";
+        result += "Amount owed is " + String.valueOf(totalAmountForStatement) + NEWLINE;
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points.";
         return result;
     }
