@@ -13,11 +13,13 @@ public class DateProcessor {
     }	
 
     private Date parseDateString(String date) {
-	   Date parsedDate = null;
-	try {
-		parsedDate = format.parse(date);
-	} catch (ParseException e) {}
-	   return parsedDate;
+	    Date parsedDate = null;
+		try {
+			parsedDate = format.parse(date);
+	   	} catch (ParseException e) {
+
+    	}
+	    return parsedDate;
     }
 
     public void saveDueDate(Account account, String date) {
