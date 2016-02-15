@@ -35,7 +35,7 @@ public class Customer {
         for (Rental rental : getRentals()) {
             double amountForIndividualRental = 0;
 
-            amountForIndividualRental += getPriceforRental(rental);
+            amountForIndividualRental += rental.getCost();
 
             // Add a frequent renter point for each rental
             frequentRenterPoints += calculateFrequentRenterPointsForRental(rental); 

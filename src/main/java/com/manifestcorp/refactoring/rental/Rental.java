@@ -1,6 +1,6 @@
 package com.manifestcorp.refactoring.rental;
 
-public class Rental {
+abstract class Rental {
 
     private Movie movie;
 
@@ -18,4 +18,6 @@ public class Rental {
     public int getDaysRented() {
         return daysRented;
     }
+
+    abstract double getCost();
 }
