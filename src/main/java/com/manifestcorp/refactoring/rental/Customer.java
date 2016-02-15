@@ -81,6 +81,8 @@ public class Customer {
                         thisAmount += (rental.getDaysRented() - 3) * 1.5;
                     }
                     break;
+                default:
+                    throw new RuntimeException();
             }
             return thisAmount;
     }
