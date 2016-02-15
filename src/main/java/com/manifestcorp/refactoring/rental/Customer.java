@@ -31,14 +31,14 @@ public class Customer {
         String result = "Rental result for " + getName() + ".\n";
 
         for (Rental rental : getRentals()) {
-            double thisAmount = 0;
+            double amountForIndividualRental = 0;
 
-            thisAmount += getPriceforRental(rental);
+            amountForIndividualRental += getPriceforRental(rental);
 
             // Add a frequent renter point for each rental
             frequentRenterPoints += calculateFrequentRenterPointsForRental(rental); 
-            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-            totalAmountForStatement += thisAmount;
+            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amountForIndividualRental) + "\n";
+            totalAmountForStatement += amountForIndividualRental;
         }
 
         result += "Amount owed is " + String.valueOf(totalAmountForStatement) + "\n";
