@@ -64,27 +64,27 @@ public class Customer {
     }
 
     private double getPriceforRental(Rental rental) {
-        double thisAmount = 0;
+        double amountForIndividualRental = 0;
         switch(rental.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
-                    thisAmount += 2;
+                    amountForIndividualRental += 2;
                     if (rental.getDaysRented() > 2) {
-                        thisAmount += (rental.getDaysRented() -2) * 1.5;
+                        amountForIndividualRental += (rental.getDaysRented() -2) * 1.5;
                     }
                     break;
                 case Movie.NEW_REALEASE:
-                    thisAmount += rental.getDaysRented() * 3;
+                    amountForIndividualRental += rental.getDaysRented() * 3;
                     break;
                 case Movie.CHILDRENS:
-                    thisAmount += 1.5;
+                    amountForIndividualRental += 1.5;
                     if (rental.getDaysRented() > 3) {
-                        thisAmount += (rental.getDaysRented() - 3) * 1.5;
+                        amountForIndividualRental += (rental.getDaysRented() - 3) * 1.5;
                     }
                     break;
                 default:
                     throw new RuntimeException();
             }
-            return thisAmount;
+            return amountForIndividualRental;
     }
 
 
