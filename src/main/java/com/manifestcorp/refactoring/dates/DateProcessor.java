@@ -6,28 +6,26 @@ import java.util.Date;
 
 public class DateProcessor {
 
-    static SimpleDateFormat format;
-
-    static {
-	   format = new SimpleDateFormat("yyyy-MM-dd");
-    }	
-
-    private Date parseDateString(String date) {
-	    Date parsedDate = null;
-		try {
-			parsedDate = format.parse(date);
-	   	} catch (ParseException e) {
-
-    	}
-	    return parsedDate;
-    }
-
     public void saveDueDate(Account account, String date) {
-        account.setDueDate(parseDateString(date));
+        Date parsedDate = null;
+        try {
+            parsedDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        account.setDueDate(parsedDate);
     }
 
     public void saveStartDate(Account account, String date) {
-        account.setStartDate(parseDateString(date));
+        Date parsedDate = null;
+        try {
+            parsedDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        account.setStartDate(parsedDate);
     }
 
 
