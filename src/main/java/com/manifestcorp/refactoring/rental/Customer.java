@@ -35,7 +35,7 @@ public class Customer {
         for (Rental rental : getRentals()) {
             double amountForIndividualRental = 0;
 
-            amountForIndividualRental += getPriceforRental(rental);
+            amountForIndividualRental += rental.getPrice();
 
             // Add a frequent renter point for each rental
             frequentRenterPoints += calculateFrequentRenterPointsForRental(rental); 
@@ -62,30 +62,5 @@ public class Customer {
         return (rental.getMovie().getPriceCode() == Movie.NEW_REALEASE &&
                 rental.getDaysRented() > 1);
     }
-
-    private double getPriceforRental(Rental rental) {
-        double amountForIndividualRental = 0;
-        switch(rental.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    amountForIndividualRental += 2;
-                    if (rental.getDaysRented() > 2) {
-                        amountForIndividualRental += (rental.getDaysRented() -2) * 1.5;
-                    }
-                    break;
-                case Movie.NEW_REALEASE:
-                    amountForIndividualRental += rental.getDaysRented() * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    amountForIndividualRental += 1.5;
-                    if (rental.getDaysRented() > 3) {
-                        amountForIndividualRental += (rental.getDaysRented() - 3) * 1.5;
-                    }
-                    break;
-                default:
-                    throw new RuntimeException();
-            }
-            return amountForIndividualRental;
-    }
-
 
 }

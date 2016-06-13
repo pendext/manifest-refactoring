@@ -1,5 +1,6 @@
 package com.manifestcorp.refactoring.rental;
 
+import com.manifestcorp.refactoring.rental.types.*;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
@@ -10,7 +11,7 @@ public class CustomerTest {
     public void customerWithSingleRegularRentalProducesAccurateStatement() throws Exception {
         Customer customer = new Customer("Phillip J. Fry");
         Movie movie = new Movie("Blade Runner", Movie.REGULAR);
-        Rental rental = new Rental(movie, 1);
+        Rental rental = new RegularRental(movie, 1);
 
         customer.addRental(rental);
 
@@ -30,9 +31,9 @@ public class CustomerTest {
         Movie jaws = new Movie("Jaws", Movie.REGULAR);
         Movie starWars = new Movie("Star Wars", Movie.REGULAR);
 
-        Rental bladeRunnerRental = new Rental(bladeRunner, 1);
-        Rental jawsRental = new Rental(jaws, 1);
-        Rental starWarsRental = new Rental(starWars, 1);
+        Rental bladeRunnerRental = new RegularRental(bladeRunner, 1);
+        Rental jawsRental = new RegularRental(jaws, 1);
+        Rental starWarsRental = new RegularRental(starWars, 1);
 
         customer.addRental(bladeRunnerRental);
         customer.addRental(jawsRental);
@@ -53,7 +54,7 @@ public class CustomerTest {
     public void customerWithSingleRegularRentalOfSeveralDaysProducesAccurateStatement() throws Exception {
         Customer customer = new Customer("Phillip J. Fry");
         Movie movie = new Movie("Blade Runner", Movie.REGULAR);
-        Rental rental = new Rental(movie, 4);
+        Rental rental = new RegularRental(movie, 4);
 
         customer.addRental(rental);
 
@@ -70,7 +71,7 @@ public class CustomerTest {
     public void customerWithSingleChildrenRentalOfSeveralDaysProducesAccurateStatement() throws Exception {
         Customer customer = new Customer("Phillip J. Fry");
         Movie movie = new Movie("Toy Story", Movie.CHILDRENS);
-        Rental rental = new Rental(movie, 4);
+        Rental rental = new ChildrensRental(movie, 4);
 
         customer.addRental(rental);
 
@@ -93,12 +94,12 @@ public class CustomerTest {
         Movie thisIsTheEnd = new Movie("This Is The End", Movie.NEW_REALEASE);
         Movie theLittleMermaid = new Movie("The Little Mermaid", Movie.CHILDRENS);
 
-        Rental bladeRunnerRental = new Rental(bladeRunner, 4);
-        Rental jawsRental = new Rental(jaws, 3);
-        Rental starWarsRental = new Rental(starWars, 2);
-        Rental inBrugesRental = new Rental(inBruges, 3);
-        Rental thisIsTheEndRental = new Rental(thisIsTheEnd, 5);
-        Rental theLittleMermaidRental = new Rental(theLittleMermaid, 1);
+        Rental bladeRunnerRental = new RegularRental(bladeRunner, 4);
+        Rental jawsRental = new RegularRental(jaws, 3);
+        Rental starWarsRental = new RegularRental(starWars, 2);
+        Rental inBrugesRental = new RegularRental(inBruges, 3);
+        Rental thisIsTheEndRental = new NewReleaseRental(thisIsTheEnd, 5);
+        Rental theLittleMermaidRental = new ChildrensRental(theLittleMermaid, 1);
 
         customer.addRental(bladeRunnerRental);
         customer.addRental(jawsRental);
