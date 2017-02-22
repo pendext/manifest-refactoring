@@ -9,7 +9,7 @@ public class CustomerTest {
     @Test
     public void customerWithSingleRegularRentalProducesAccurateStatement() throws Exception {
         Customer customer = new Customer("Phillip J. Fry");
-        Movie movie = new Movie("Blade Runner", Movie.REGULAR);
+        Movie movie = new RegularMovie("Blade Runner", Movie.REGULAR);
         Rental rental = new Rental(movie, 1);
 
         customer.addRental(rental);
@@ -26,9 +26,9 @@ public class CustomerTest {
     @Test
     public void customerWithMultipleRegularRentalsProducesAccurateStatement() throws Exception {
         Customer customer = new Customer("Phillip J. Fry");
-        Movie bladeRunner = new Movie("Blade Runner", Movie.REGULAR);
-        Movie jaws = new Movie("Jaws", Movie.REGULAR);
-        Movie starWars = new Movie("Star Wars", Movie.REGULAR);
+        Movie bladeRunner = new RegularMovie("Blade Runner", Movie.REGULAR);
+        Movie jaws = new RegularMovie("Jaws", Movie.REGULAR);
+        Movie starWars = new RegularMovie("Star Wars", Movie.REGULAR);
 
         Rental bladeRunnerRental = new Rental(bladeRunner, 1);
         Rental jawsRental = new Rental(jaws, 1);
@@ -52,7 +52,7 @@ public class CustomerTest {
     @Test
     public void customerWithSingleRegularRentalOfSeveralDaysProducesAccurateStatement() throws Exception {
         Customer customer = new Customer("Phillip J. Fry");
-        Movie movie = new Movie("Blade Runner", Movie.REGULAR);
+        Movie movie = new RegularMovie("Blade Runner", Movie.REGULAR);
         Rental rental = new Rental(movie, 4);
 
         customer.addRental(rental);
@@ -69,7 +69,7 @@ public class CustomerTest {
     @Test
     public void customerWithSingleChildrenRentalOfSeveralDaysProducesAccurateStatement() throws Exception {
         Customer customer = new Customer("Phillip J. Fry");
-        Movie movie = new Movie("Toy Story", Movie.CHILDRENS);
+        Movie movie = new ChildrensMovie("Toy Story", Movie.CHILDRENS);
         Rental rental = new Rental(movie, 4);
 
         customer.addRental(rental);
@@ -86,12 +86,12 @@ public class CustomerTest {
     @Test
     public void customerWithMultipleMoviesOfVaryingTypesAndDaysProducesAccurateStatement() throws Exception {
         Customer customer = new Customer("Phillip J. Fry");
-        Movie bladeRunner = new Movie("Blade Runner", Movie.REGULAR);
-        Movie jaws = new Movie("Jaws", Movie.REGULAR);
-        Movie starWars = new Movie("Star Wars", Movie.REGULAR);
-        Movie inBruges = new Movie("In Bruges", Movie.REGULAR);
-        Movie thisIsTheEnd = new Movie("This Is The End", Movie.NEW_RELEASE);
-        Movie theLittleMermaid = new Movie("The Little Mermaid", Movie.CHILDRENS);
+        Movie bladeRunner = new RegularMovie("Blade Runner", Movie.REGULAR);
+        Movie jaws = new RegularMovie("Jaws", Movie.REGULAR);
+        Movie starWars = new RegularMovie("Star Wars", Movie.REGULAR);
+        Movie inBruges = new RegularMovie("In Bruges", Movie.REGULAR);
+        Movie thisIsTheEnd = new NewMovie("This Is The End", Movie.NEW_RELEASE);
+        Movie theLittleMermaid = new ChildrensMovie("The Little Mermaid", Movie.CHILDRENS);
 
         Rental bladeRunnerRental = new Rental(bladeRunner, 4);
         Rental jawsRental = new Rental(jaws, 3);
